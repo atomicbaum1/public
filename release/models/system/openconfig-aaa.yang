@@ -34,6 +34,13 @@ module openconfig-aaa {
 
   oc-ext:openconfig-version "0.3.0";
 
+  revision "2017-10-31" {
+    description
+      "Added ordered-by user to the AAA server list and AAA 
+       method leaf lists";
+    reference "0.3.0";
+  }
+
   revision "2017-09-18" {
     description
       "Updated to use OpenConfig types modules";
@@ -220,8 +227,9 @@ module openconfig-aaa {
 
       list server {
         key "address";
+        ordered-by user;
         description
-          "List of AAA servers";
+          "Ordered list of AAA servers";
 
         leaf address {
           type leafref {
@@ -422,12 +430,13 @@ module openconfig-aaa {
         //TODO:  in YANG 1.1 this should be converted to a leafref to
         //point to the server group name.
       }
+      ordered-by user;
       description
-        "The method used for AAA accounting for this event
-        type.  The method is defined by the destination for
-        accounting data, which may be specified as the group of
-        all TACACS+/RADIUS servers, a defined server group, or
-        the local system.";
+        "Ordered list of methods for AAA accounting. The method 
+        used for AAA accounting for this event type.  The method 
+        is defined by the destination for accounting data, which 
+        may be specified as the group of all TACACS+/RADIUS 
+        servers, a defined server group, or the local system.";
     }
   }
 
@@ -568,6 +577,7 @@ module openconfig-aaa {
         }
         type string;
       }
+      ordered-by user;  
       description
         "Ordered list of methods for authorizing commands.  The first
         method that provides a response (positive or negative) should

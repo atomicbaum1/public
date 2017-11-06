@@ -24,6 +24,13 @@ module openconfig-aaa-types {
 
   oc-ext:openconfig-version "0.3.0";
 
+  revision "2017-11-05" {
+    description
+      "Updated AAA_AUTHORIZATION_EVENT identities base to the 
+       AAA_AUTHORIZATION_EVENT_TYPE identity.";
+    reference "0.3.0";
+  }
+
   revision "2017-09-18" {
     description
       "Updated to use OpenConfig types modules";
@@ -91,13 +98,13 @@ module openconfig-aaa-types {
   }
 
   identity AAA_AUTHORIZATION_EVENT_COMMAND {
-    base AAA_ACCOUNTING_EVENT_TYPE;
+    base AAA_AUTHORIZATION_EVENT_TYPE;
     description
       "Specifies interactive command events for AAA authorization";
   }
 
   identity AAA_AUTHORIZATION_EVENT_CONFIG {
-    base AAA_ACCOUNTING_EVENT_TYPE;
+    base AAA_AUTHORIZATION_EVENT_TYPE;
     description
       "Specifies configuration (e.g., EXEC) events for AAA
       authorization";
